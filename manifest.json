@@ -1,7 +1,5 @@
 {
-  "manifest_version": 2,
-
-  "name": "Alternative Bookmark",
+  "name": "Alternative Bookmarking",
   "description": "This extension is your alternative bookmark.",
   "version": "1.0",
 
@@ -10,11 +8,21 @@
     "contextMenus",
     "bookmarks"
   ],
+
   "background": {
-    "scripts": ["right_click.js", "jquery-2.1.1.min.js"]
+    "scripts": ["background.js", "jquery-2.1.1.min.js"]
   },
+  "commands": {
+    "bookmark_through_keyboard": {
+      "suggested_key": { "default": "Alt+B" },
+      "description": "Bookmark the current page through keyboard shortcut."
+    }
+  },
+
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
-  }
+  },
+
+  "manifest_version": 2
 }

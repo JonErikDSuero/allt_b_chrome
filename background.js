@@ -1,3 +1,10 @@
+chrome.commands.onCommand.addListener(function(command) {
+  if (command == "bookmark_through_keyboard") {
+    bookmark("through_keyboard"); // pass an arbitrary value
+  }
+});
+
+
 chrome.contextMenus.create({
   title: "Alt B",
   contexts:["all"],
