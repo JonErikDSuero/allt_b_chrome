@@ -29,6 +29,12 @@ function bookmark(info) {
           var folders = get_folders(children_of_bookmarks_bar, folders);
           var best_folder = get_best_folder(folders, tag_raw);
           
+          chrome.tabs.executeScript(tab.id, {code: "var folder_title = '"+best_folder.title+"';"}, function() {
+            chrome.tabs.executeScript(tab.id, {file: 'jquery-2.1.1.min.js'}, function() {
+              chrome.tabs.executeScript(tab.id, {file: 'bookmarked_modal.js'});
+            });
+          });
+
           chrome.bookmarks.create({
             'parentId': best_folder.id,
             title: tab.title,
