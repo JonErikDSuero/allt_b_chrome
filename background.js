@@ -45,6 +45,9 @@ function detectCurrentTab(info) {
         if (!current_tab_is_bookmarked) {
           toggleBookmarkedIcon(true);
           bookmark(tab, info);
+        } else {
+          toggleBookmarkedIcon(false);
+          chrome.bookmarks.remove(similar_bookmarks[0].id);
         }
       }
     });
