@@ -10,6 +10,12 @@
     "bookmarks"
   ],
 
+  "icons": {
+    "16": "images/heart_off.png",
+    "48": "images/heart_off.png",
+    "128": "images/heart_off.png"
+  },
+
   "background": {
     "scripts": ["background.js", "jquery-2.1.1.min.js"]
   },
@@ -21,8 +27,7 @@
   },
 
   "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
+    "default_icon": "images/heart_off.png"
   },
 
   "manifest_version": 2

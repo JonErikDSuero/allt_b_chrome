@@ -1,29 +1,35 @@
 chrome.commands.onCommand.addListener(function(command) {
   if (command == "bookmark_through_keyboard") {
-    detectCurrentTab(); // pass an arbitrary value
+    detectCurrentTab();
   }
 });
 
 
 chrome.contextMenus.create({
-  title: "Alt B",
+  title: "Alt Bookmark",
   contexts:["all"],
   onclick: detectCurrentTab
 });
 
 
-chrome.tabs.onActivated.addListener(function(activeInfo) { //listen for new tab to be activated
+chrome.browserAction.onClicked.addListener( function(tab) {
+  detectCurrentTab();
+});
+
+
+chrome.tabs.onActivated.addListener( function(activeInfo) { //listen for new tab to be activated
   detectCurrentTab("do_not_bookmark");
 });
 
 
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) { //listen for current tab to be changed
+chrome.tabs.onUpdated.addListener( function(tabId, changeInfo, tab) { //listen for current tab to be changed
   detectCurrentTab("do_not_bookmark");
 });
 
+// Erik, add/remove bookmark listeners
 
 function toggleBookmarkedIcon(bookmarked) {
-  var icon_path = ((bookmarked) ? 'heart_icon.png' : 'icon.png');
+  var icon_path = ((bookmarked) ? 'images/heart_on.png' : 'images/heart_off.png');
   chrome.browserAction.setIcon({path: icon_path});
 }
 
